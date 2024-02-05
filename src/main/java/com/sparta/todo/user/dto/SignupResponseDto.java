@@ -16,4 +16,6 @@ public class SignupResponseDto {
     }
 
 
+    public SignupResponseDto(String token, String username) {
+    }
 }
