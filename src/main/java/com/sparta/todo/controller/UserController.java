@@ -1,9 +1,9 @@
-package com.sparta.todo.user.controller;
+package com.sparta.todo.controller;
 
 
-import com.sparta.todo.user.dto.SignupRequestDto;
-import com.sparta.todo.user.dto.SignupResponseDto;
-import com.sparta.todo.user.service.UserService;
+import com.sparta.todo.dto.SignupRequestDto;
+import com.sparta.todo.dto.SignupResponseDto;
+import com.sparta.todo.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

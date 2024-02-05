@@ -1,10 +1,10 @@
-package com.sparta.todo.user.security;
+package com.sparta.todo.security;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparta.todo.user.dto.LoginRequestDto;
-import com.sparta.todo.user.jwt.JwtMessage;
-import com.sparta.todo.user.jwt.JwtUtil;
+import com.sparta.todo.jwt.JwtUtil;
+import com.sparta.todo.dto.LoginRequestDto;
+import com.sparta.todo.jwt.JwtMessage;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

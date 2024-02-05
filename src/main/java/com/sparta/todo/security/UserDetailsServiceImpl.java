@@ -1,8 +1,8 @@
-package com.sparta.todo.user.security;
+package com.sparta.todo.security;
 
 
-import com.sparta.todo.user.entity.User;
-import com.sparta.todo.user.repository.UserRepository;
+import com.sparta.todo.entity.User;
+import com.sparta.todo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

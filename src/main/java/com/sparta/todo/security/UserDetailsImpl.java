@@ -1,10 +1,10 @@
-package com.sparta.todo.user.security;
+package com.sparta.todo.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import com.sparta.todo.user.entity.User;
+import com.sparta.todo.entity.User;
 
 public class UserDetailsImpl implements UserDetails {
 

@@ -1,4 +1,4 @@
-package com.sparta.todo.user.jwt;
+package com.sparta.todo.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletResponse;

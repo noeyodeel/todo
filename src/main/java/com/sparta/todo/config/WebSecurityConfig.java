@@ -1,11 +1,11 @@
-package com.sparta.todo.user.config;
+package com.sparta.todo.config;
 
 
-import com.sparta.todo.user.jwt.JwtMessage;
-import com.sparta.todo.user.jwt.JwtUtil;
-import com.sparta.todo.user.security.JwtAuthenticationFilter;
-import com.sparta.todo.user.security.JwtAuthorizationFilter;
-import com.sparta.todo.user.security.UserDetailsServiceImpl;
+import com.sparta.todo.jwt.JwtUtil;
+import com.sparta.todo.security.JwtAuthenticationFilter;
+import com.sparta.todo.security.JwtAuthorizationFilter;
+import com.sparta.todo.jwt.JwtMessage;
+import com.sparta.todo.security.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;

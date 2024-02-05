@@ -1,7 +1,7 @@
-package com.sparta.todo.user.repository;
+package com.sparta.todo.repository;
 
 
-import com.sparta.todo.user.entity.User;
+import com.sparta.todo.entity.User;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 

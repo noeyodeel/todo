@@ -1,7 +1,7 @@
-package com.sparta.todo.user.security;
+package com.sparta.todo.security;
 
 
-import com.sparta.todo.user.jwt.JwtUtil;
+import com.sparta.todo.jwt.JwtUtil;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

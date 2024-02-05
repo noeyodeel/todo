@@ -1,9 +1,9 @@
-package com.sparta.todo.user.service;
+package com.sparta.todo.service;
 
 
-import com.sparta.todo.user.dto.SignupRequestDto;
-import com.sparta.todo.user.entity.User;
-import com.sparta.todo.user.repository.UserRepository;
+import com.sparta.todo.dto.SignupRequestDto;
+import com.sparta.todo.entity.User;
+import com.sparta.todo.repository.UserRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
