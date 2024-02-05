@@ -1,14 +1,14 @@
 package com.sparta.todo.user.controller;
 
+
 import com.sparta.todo.user.dto.SignupRequestDto;
 import com.sparta.todo.user.dto.SignupResponseDto;
 import com.sparta.todo.user.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,16 +22,16 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/user/login")
-    public ResponseEntity<String> login (@Valid @RequestBody SignupRequestDto requestDto){
-        return ResponseEntity.ok().body(userService.login(requestDto));
-    }
-
 
     @PostMapping("/user/signup")
-    public ResponseEntity<SignupResponseDto>signup(@Valid @RequestBody  SignupRequestDto requestDto) {
+    public ResponseEntity<SignupResponseDto> signup(
+        @Valid @RequestBody SignupRequestDto requestDto) {
 
-        return ResponseEntity.ok().body(userService.signup(requestDto));
+        userService.signup(requestDto);
+        String message = requestDto.getUsername() + "님 회원가입이 완료되었습니다.";
+
+        return ResponseEntity.ok().body(new SignupResponseDto(message, HttpStatus.OK));
+
     }
 
 }

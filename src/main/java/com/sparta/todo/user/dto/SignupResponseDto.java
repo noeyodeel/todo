@@ -1,21 +1,15 @@
 package com.sparta.todo.user.dto;
 
-import com.sparta.todo.user.entity.User;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 
 @Getter
+@RequiredArgsConstructor
 public class SignupResponseDto {
 
-    private Long id;
-    private String userName;
+    private final String message;
+    private final HttpStatus httpStatus;
 
 
-    public SignupResponseDto(User user) {
-        this.id = user.getId();
-        this.userName = user.getUsername();
-    }
-
-
-    public SignupResponseDto(String token, String username) {
-    }
 }
