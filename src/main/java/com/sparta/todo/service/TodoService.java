@@ -1,5 +1,6 @@
 package com.sparta.todo.service;
 
+import com.sparta.todo.dto.TodoListResponseDto;
 import com.sparta.todo.dto.TodoRequestDto;
 import com.sparta.todo.dto.TodoResponseDto;
 import com.sparta.todo.entity.Todo;
@@ -7,6 +8,10 @@ import com.sparta.todo.entity.User;
 import com.sparta.todo.repository.TodoRepository;
 import com.sparta.todo.repository.UserRepository;
 import com.sparta.todo.security.UserDetailsImpl;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +36,27 @@ public class TodoService {
         todoRepository.save(todo);
 
         return new TodoResponseDto(todo, username);
+    }
+
+    public TodoListResponseDto getidTodos(Long id) {
+
+        Todo todo = todoRepository.findById(id).orElseThrow(() ->
+            new IllegalArgumentException("선택한 메모는 존재하지 않습니다.")
+        );
+        return new TodoListResponseDto(todo);
+
+    }
+
+    public List<TodoListResponseDto> getTodos(User user) {
+
+        return todoRepository.findAllByUserOrderByCreatAtDesc(user).stream()
+            .map(TodoListResponseDto::new).toList();
+
+    }
+
+    public List<TodoListResponseDto> getAlltodos() {
+        List<Todo> todoList = todoRepository.findAll();
+        return todoList.stream().map(todo -> new TodoListResponseDto(todo)).toList();
+
     }
 }

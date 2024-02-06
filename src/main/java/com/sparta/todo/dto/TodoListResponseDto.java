@@ -1,30 +1,26 @@
 package com.sparta.todo.dto;
 
-
 import com.sparta.todo.entity.Todo;
 import java.time.LocalDateTime;
-import javax.swing.plaf.PanelUI;
 import lombok.Getter;
-import lombok.Setter;
-import org.springframework.cglib.core.Local;
+import lombok.NoArgsConstructor;
 
-@Setter
 @Getter
-public class TodoResponseDto {
+@NoArgsConstructor
+public class TodoListResponseDto {
+
     private String title;
-    private String content;
     private String user;
     private LocalDateTime createAt;
     private boolean isCompleted;
 
 
-    public TodoResponseDto(Todo todo, String username) {
+    public TodoListResponseDto(Todo todo) {
         this.title = todo.getTitle();
-        this.content = todo.getContent();
-        this.user = username;
+        this.user = todo.getUser().getUsername();
         this.createAt = todo.getCreatAt();
         this.isCompleted = todo.isCompleted();
-
     }
+
 
 }
