@@ -48,6 +48,10 @@ public class TodoController {
         return todoService.getAlltodos();
     }
 
+    @GetMapping("update/{id}") //선택한 게시글 조회
+    public TodoResponseDto updateTodo(@PathVariable Long id,@Valid @RequestBody TodoRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return todoService.updateTodo(id, requestDto,userDetails);
+    }
 
 
 }

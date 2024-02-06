@@ -8,6 +8,7 @@ import com.sparta.todo.entity.User;
 import com.sparta.todo.repository.TodoRepository;
 import com.sparta.todo.repository.UserRepository;
 import com.sparta.todo.security.UserDetailsImpl;
+import jakarta.transaction.Transactional;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,5 +60,15 @@ public class TodoService {
         List<Todo> todoList = todoRepository.findAll();
         return todoList.stream().map(todo -> new TodoListResponseDto(todo)).toList();
 
+    }
+
+    @Transactional
+    public TodoResponseDto updateTodo(Long id, TodoRequestDto requestDto, UserDetailsImpl userDetails) {
+        Todo todo = todoRepository.findById(id).orElseThrow(() ->
+            new IllegalArgumentException("선택한 메모는 존재하지 않습니다.")
+        );
+        String username = userDetails.getUsername();
+        todo.update(requestDto);
+        return  new TodoResponseDto(todo,username);
     }
 }
