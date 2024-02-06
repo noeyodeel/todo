@@ -52,4 +52,8 @@ public class Todo {
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
     }
+
+    public void complete() {
+        this.isCompleted = true;
+    }
 }

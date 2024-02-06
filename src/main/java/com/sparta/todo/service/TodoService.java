@@ -71,4 +71,15 @@ public class TodoService {
         todo.update(requestDto);
         return  new TodoResponseDto(todo,username);
     }
+    @Transactional
+    public TodoResponseDto completeTodo(Long id, UserDetailsImpl userDetails) {
+        Todo todo = todoRepository.findById(id).orElseThrow(() ->
+            new IllegalArgumentException("선택한 메모는 존재하지 않습니다.")
+        );
+        User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow(()->
+            new IllegalArgumentException("회원을 찾을 수 없습니다.")
+        );
+        todo.complete();
+        return new  TodoResponseDto(todo,user.getUsername());
+    }
 }

@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,9 +50,13 @@ public class TodoController {
         return todoService.getAlltodos();
     }
 
-    @GetMapping("update/{id}") //선택한 게시글 조회
+    @PatchMapping("update/{id}") //선택한 게시글 조회
     public TodoResponseDto updateTodo(@PathVariable Long id,@Valid @RequestBody TodoRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return todoService.updateTodo(id, requestDto,userDetails);
+    }
+    @PatchMapping("/{id}/complete") //선택한 게시글 조회
+    public TodoResponseDto completeTodo(@PathVariable Long id, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return todoService.completeTodo(id,userDetails);
     }
 
 
