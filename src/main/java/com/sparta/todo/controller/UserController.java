@@ -23,7 +23,7 @@ public class UserController {
     private final UserService userService;
 
 
-    @PostMapping("/user/signup")
+    @PostMapping("/users/signup")
     public ResponseEntity<SignupResponseDto> signup(
         @Valid @RequestBody SignupRequestDto requestDto) {
 

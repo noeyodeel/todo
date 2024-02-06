@@ -38,12 +38,13 @@ public class TodoService {
         return new TodoResponseDto(todo, username);
     }
 
-    public TodoListResponseDto getidTodos(Long id) {
+    public TodoResponseDto getidTodos(Long id, UserDetailsImpl userDetails) {
+        String username = userDetails.getUsername();
 
         Todo todo = todoRepository.findById(id).orElseThrow(() ->
             new IllegalArgumentException("선택한 메모는 존재하지 않습니다.")
         );
-        return new TodoListResponseDto(todo);
+        return new TodoResponseDto(todo, username);
 
     }
 

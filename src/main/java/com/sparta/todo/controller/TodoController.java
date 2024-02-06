@@ -20,32 +20,34 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/todos")
 public class TodoController {
 
     private final TodoService todoService;
 
-    @PostMapping("/todo") //일정 생성
+    @PostMapping() //일정 생성
     public TodoResponseDto createTodo(@Valid @RequestBody TodoRequestDto requestDto,
         @AuthenticationPrincipal UserDetailsImpl userDetails) {
 
         return todoService.createTodo(requestDto, userDetails);
     }
 
-    @GetMapping("/todo/{id}") //선택한 todos 보기
-    public TodoListResponseDto getIdTodos(@PathVariable Long id) {
-        return todoService.getidTodos(id);
+    @GetMapping("/{id}") //선택한 게시글 조회
+    public TodoResponseDto getIdTodos(@PathVariable Long id, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return todoService.getidTodos(id, userDetails);
     }
 
-    @GetMapping("/todo")//로그인한 사람이 쓴 글 전체 보기
+    @GetMapping()//로그인한 사람이 쓴 글 전체 조회
     public List<TodoListResponseDto> getTodos(
         @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return todoService.getTodos(userDetails.getUser());
     }
 
-    @GetMapping("/todolist")
+    @GetMapping("/all") //전체 게시글 조회
     public List<TodoListResponseDto> getAllTodos() {
         return todoService.getAlltodos();
     }
+
+
 
 }

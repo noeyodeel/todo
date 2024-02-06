@@ -26,5 +26,12 @@ public class TodoResponseDto {
         this.isCompleted = todo.isCompleted();
 
     }
+    public TodoResponseDto(Todo todo) {
+        this.title = todo.getTitle();
+        this.content = todo.getContent();
+        this.user = String.valueOf(todo.getUser());
+        this.createAt = todo.getCreatAt();
+
+    }
 
 }
