@@ -82,4 +82,10 @@ public class TodoService {
         todo.complete();
         return new  TodoResponseDto(todo,user.getUsername());
     }
+
+    public Todo getTodo(Long postId) {
+        return todoRepository.findById(postId)
+            .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 할일 id 입니다."));
+
+    }
 }
