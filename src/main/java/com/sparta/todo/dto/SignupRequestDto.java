@@ -4,11 +4,13 @@ package com.sparta.todo.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class SignupRequestDto {
 
     @Size(min = 4, max = 10, message = "아이디는 최소 4자 이상, 10자 이하로 입력하세요.")

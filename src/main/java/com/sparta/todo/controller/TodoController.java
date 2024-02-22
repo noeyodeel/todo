@@ -50,11 +50,11 @@ public class TodoController {
         return todoService.getAlltodos();
     }
 
-    @PatchMapping("update/{id}") //선택한 게시글 조회
+    @PatchMapping("update/{id}") //선택한 게시글 수정
     public TodoResponseDto updateTodo(@PathVariable Long id,@Valid @RequestBody TodoRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return todoService.updateTodo(id, requestDto,userDetails);
     }
-    @PatchMapping("/{id}/complete") //선택한 게시글 조회
+    @PatchMapping("/{id}/complete") //완료된 게시글 조회
     public TodoResponseDto completeTodo(@PathVariable Long id, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return todoService.completeTodo(id,userDetails);
     }
