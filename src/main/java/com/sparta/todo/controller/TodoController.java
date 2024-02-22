@@ -31,12 +31,12 @@ public class TodoController {
     public TodoResponseDto createTodo(@Valid @RequestBody TodoRequestDto requestDto,
         @AuthenticationPrincipal UserDetailsImpl userDetails) {
 
-        return todoService.createTodo(requestDto, userDetails);
+        return todoService.createTodo(requestDto, userDetails.getUser());
     }
 
     @GetMapping("/{id}") //선택한 게시글 조회
     public TodoResponseDto getIdTodos(@PathVariable Long id, @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return todoService.getidTodos(id, userDetails);
+        return todoService.getidTodos(id, userDetails.getUser());
     }
 
     @GetMapping()//로그인한 사람이 쓴 글 전체 조회
@@ -52,11 +52,11 @@ public class TodoController {
 
     @PatchMapping("update/{id}") //선택한 게시글 수정
     public TodoResponseDto updateTodo(@PathVariable Long id,@Valid @RequestBody TodoRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return todoService.updateTodo(id, requestDto,userDetails);
+        return todoService.updateTodo(id, requestDto,userDetails.getUser());
     }
     @PatchMapping("/{id}/complete") //완료된 게시글 조회
     public TodoResponseDto completeTodo(@PathVariable Long id, @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return todoService.completeTodo(id,userDetails);
+        return todoService.completeTodo(id,userDetails.getUser());
     }
 
 

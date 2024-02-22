@@ -9,10 +9,7 @@ import com.sparta.todo.repository.TodoRepository;
 import com.sparta.todo.repository.UserRepository;
 import com.sparta.todo.security.UserDetailsImpl;
 import jakarta.transaction.Transactional;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +21,7 @@ public class TodoService {
     private final TodoRepository todoRepository;
 
     public TodoResponseDto createTodo(TodoRequestDto requestDto,
-        UserDetailsImpl userDetails) {
+        User userDetails) {
         String title = requestDto.getTitle();
         String content = requestDto.getContent();
         String username = userDetails.getUsername();
@@ -39,7 +36,7 @@ public class TodoService {
         return new TodoResponseDto(todo, username);
     }
 
-    public TodoResponseDto getidTodos(Long id, UserDetailsImpl userDetails) {
+    public TodoResponseDto getidTodos(Long id, User userDetails) {
         String username = userDetails.getUsername();
 
         Todo todo = todoRepository.findById(id).orElseThrow(() ->
@@ -63,7 +60,7 @@ public class TodoService {
     }
 
     @Transactional
-    public TodoResponseDto updateTodo(Long id, TodoRequestDto requestDto, UserDetailsImpl userDetails) {
+    public TodoResponseDto updateTodo(Long id, TodoRequestDto requestDto, User userDetails) {
         Todo todo = todoRepository.findById(id).orElseThrow(() ->
             new IllegalArgumentException("선택한 메모는 존재하지 않습니다.")
         );
@@ -72,7 +69,7 @@ public class TodoService {
         return  new TodoResponseDto(todo,username);
     }
     @Transactional
-    public TodoResponseDto completeTodo(Long id, UserDetailsImpl userDetails) {
+    public TodoResponseDto completeTodo(Long id, User userDetails) {
         Todo todo = todoRepository.findById(id).orElseThrow(() ->
             new IllegalArgumentException("선택한 메모는 존재하지 않습니다.")
         );
