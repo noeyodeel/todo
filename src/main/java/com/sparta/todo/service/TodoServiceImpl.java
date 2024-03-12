@@ -7,7 +7,6 @@ import com.sparta.todo.entity.Todo;
 import com.sparta.todo.entity.User;
 import com.sparta.todo.repository.TodoRepository;
 import com.sparta.todo.repository.UserRepository;
-import com.sparta.todo.security.UserDetailsImpl;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -15,11 +14,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class TodoService {
+public class TodoServiceImpl implements Todoservice {
 
     private final UserRepository userRepository;
     private final TodoRepository todoRepository;
 
+    @Override
     public TodoResponseDto createTodo(TodoRequestDto requestDto,
         User userDetails) {
         String title = requestDto.getTitle();

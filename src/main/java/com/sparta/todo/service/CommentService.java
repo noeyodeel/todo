@@ -16,7 +16,8 @@ import org.springframework.stereotype.Service;
 public class CommentService {
 
     private final CommentRepository commentRepository;
-    private final TodoService todoService;
+    private final Todoservice todoService;
+
 
     public CommentResponseDto createComment(CommentRequestDto requestDto, User user) {
         Todo todo = todoService.getTodo(requestDto.getPostId());

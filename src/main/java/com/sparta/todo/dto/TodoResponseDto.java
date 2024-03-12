@@ -16,6 +16,8 @@ public class TodoResponseDto {
     private String user;
     private LocalDateTime createAt;
     private boolean isCompleted;
+    private String message;
+    private int status;
 
 
     public TodoResponseDto(Todo todo, String username) {
@@ -26,12 +28,9 @@ public class TodoResponseDto {
         this.isCompleted = todo.isCompleted();
 
     }
-    public TodoResponseDto(Todo todo) {
-        this.title = todo.getTitle();
-        this.content = todo.getContent();
-        this.user = String.valueOf(todo.getUser());
-        this.createAt = todo.getCreatAt();
 
+    public TodoResponseDto(String message, int status) {
+        this.message = message;
+        this.status = status;
     }
-
 }

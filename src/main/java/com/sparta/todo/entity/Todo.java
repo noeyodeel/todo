@@ -1,6 +1,7 @@
 package com.sparta.todo.entity;
 
 import com.sparta.todo.dto.TodoRequestDto;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,9 +28,12 @@ public class Todo {
     private Long id;
 
     @Column(nullable = false, length = 50)
+    @Pattern(regexp = "^[가-힣]*$", message = "한글만 입력 가능합니다.")
     private String title;
 
+
     @Column(nullable = false, length = 1000)
+    @Pattern(regexp = "^[가-힣]*$", message = "한글만 입력 가능합니다.")
     private String content;
 
     @Column(updatable = false)
