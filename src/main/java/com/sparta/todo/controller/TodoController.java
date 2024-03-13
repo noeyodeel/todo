@@ -5,13 +5,10 @@ import com.sparta.todo.dto.TodoRequestDto;
 import com.sparta.todo.dto.TodoResponseDto;
 import com.sparta.todo.security.UserDetailsImpl;
 import com.sparta.todo.service.TodoServiceImpl;
-import com.sparta.todo.service.Todoservice;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -34,7 +31,6 @@ public class TodoController {
         @AuthenticationPrincipal UserDetailsImpl userDetails) {
 
         return todoService.createTodo(requestDto, userDetails.getUser());
-
     }
 
     @GetMapping("/{id}") //선택한 게시글 조회

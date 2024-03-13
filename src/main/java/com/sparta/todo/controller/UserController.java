@@ -3,7 +3,7 @@ package com.sparta.todo.controller;
 
 import com.sparta.todo.dto.SignupRequestDto;
 import com.sparta.todo.dto.SignupResponseDto;
-import com.sparta.todo.service.UserService;
+import com.sparta.todo.service.UserServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class UserController {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
 
     @PostMapping("/users/signup")
