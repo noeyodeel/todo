@@ -16,8 +16,6 @@ public class TodoResponseDto {
     private String user;
     private LocalDateTime createAt;
     private boolean isCompleted;
-    private String message;
-    private int status;
 
 
     public TodoResponseDto(Todo todo, String username) {
@@ -29,8 +27,5 @@ public class TodoResponseDto {
 
     }
 
-    public TodoResponseDto(String message, int status) {
-        this.message = message;
-        this.status = status;
-    }
+
 }

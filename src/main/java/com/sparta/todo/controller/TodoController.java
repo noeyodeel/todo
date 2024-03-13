@@ -4,6 +4,7 @@ import com.sparta.todo.dto.TodoListResponseDto;
 import com.sparta.todo.dto.TodoRequestDto;
 import com.sparta.todo.dto.TodoResponseDto;
 import com.sparta.todo.security.UserDetailsImpl;
+import com.sparta.todo.service.TodoServiceImpl;
 import com.sparta.todo.service.Todoservice;
 import jakarta.validation.Valid;
 import java.util.List;
@@ -26,15 +27,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/todos")
 public class TodoController {
 
-    private final Todoservice todoService;
+    private final TodoServiceImpl todoService;
 
     @PostMapping() //일정 생성
-    public ResponseEntity<TodoResponseDto> createTodo(@Valid @RequestBody TodoRequestDto requestDto,
+    public TodoResponseDto createTodo(@Valid @RequestBody TodoRequestDto requestDto,
         @AuthenticationPrincipal UserDetailsImpl userDetails) {
 
-        todoService.createTodo(requestDto, userDetails.getUser());
-        return ResponseEntity.status(HttpStatus.ACCEPTED)
-            .body(new TodoResponseDto("일정 생성 성공", HttpStatus.ACCEPTED.value()));
+        return todoService.createTodo(requestDto, userDetails.getUser());
+
     }
 
     @GetMapping("/{id}") //선택한 게시글 조회
