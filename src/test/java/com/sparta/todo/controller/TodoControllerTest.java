@@ -13,7 +13,7 @@ import com.sparta.todo.config.WebSecurityConfig;
 import com.sparta.todo.dto.TodoRequestDto;
 import com.sparta.todo.entity.User;
 import com.sparta.todo.security.UserDetailsImpl;
-import com.sparta.todo.service.TodoService;
+import com.sparta.todo.service.TodoServiceImpl;
 import java.security.Principal;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -51,7 +51,7 @@ class TodoControllerTest {
     private ObjectMapper objectMapper;
 
     @MockBean
-    TodoService todoService;
+    TodoServiceImpl todoService;
 
     @BeforeEach
     public void setup() {
@@ -113,7 +113,7 @@ class TodoControllerTest {
         this.mockUserSetup();
 
         //when = then
-        mvc.perform(get("/api/todos")
+        mvc.perform(get("/api/todos?page=0&size=5")
                 .contentType(MediaType.APPLICATION_JSON)
                 .principal(mockPrincipal))
             .andExpect(status().isOk())
