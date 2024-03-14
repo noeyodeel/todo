@@ -10,6 +10,8 @@ import com.sparta.todo.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -46,9 +48,12 @@ public class TodoServiceImpl implements Todoservice {
 
     }
 
-    public List<TodoListResponseDto> getTodos(User user) {
 
-        return todoRepository.findAllByUserOrderByCreatAtDesc(user.getUsername()).stream()
+    public List<TodoListResponseDto> getTodos(String username,int page, int size) {
+
+        PageRequest pageRequest = PageRequest.of(page, size);
+
+        return todoRepository.findAllByUserOrderByCreatAtDesc(username, pageRequest.getOffset(),pageRequest.getPageSize()).stream()
             .map(TodoListResponseDto::new).toList();
 
     }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
@@ -41,8 +42,9 @@ public class TodoController {
 
     @GetMapping()//로그인한 사람이 쓴 글 전체 조회
     public List<TodoListResponseDto> getTodos(
-        @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return todoService.getTodos(userDetails.getUser());
+        @AuthenticationPrincipal UserDetailsImpl userDetails, @RequestParam("page") int page,
+        @RequestParam("size") int size) {
+        return todoService.getTodos(userDetails.getUser().getUsername(),page,size);
     }
 
     @GetMapping("/all") //전체 게시글 조회

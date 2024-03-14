@@ -12,7 +12,7 @@ public interface Todoservice {
     TodoResponseDto createTodo(TodoRequestDto requestDto,
         User userDetails);
     TodoResponseDto getidTodos(Long id, User userDetails);
-    List<TodoListResponseDto> getTodos(User user);
+    List<TodoListResponseDto> getTodos(String username,int page, int size);
     List<TodoListResponseDto> getAlltodos();
     TodoResponseDto updateTodo(Long id, TodoRequestDto requestDto, User userDetails);
     TodoResponseDto completeTodo(Long id, User userDetails);

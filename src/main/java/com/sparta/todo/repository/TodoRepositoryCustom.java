@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TodoRepositoryCustom {
-    List<Todo> findAllByUserOrderByCreatAtDesc(String username);
+    List<Todo> findAllByUserOrderByCreatAtDesc(String username, Long offset, int pageSize);
 
 }
