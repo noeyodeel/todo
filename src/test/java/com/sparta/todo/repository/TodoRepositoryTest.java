@@ -45,7 +45,7 @@ class TodoRepositoryTest {
         );
 
         // When
-        List<Todo> todos = todoRepository.findAllByUserOrderByCreatAtDesc(user);
+        List<Todo> todos = todoRepository.findAllByUserOrderByCreatAtDesc(user.getUsername());
 
         // Then
         assertEquals(2, todos.size()); // 예상한 결과 크기가 맞는지 확인

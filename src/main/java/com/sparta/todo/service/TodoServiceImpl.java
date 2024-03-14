@@ -48,7 +48,7 @@ public class TodoServiceImpl implements Todoservice {
 
     public List<TodoListResponseDto> getTodos(User user) {
 
-        return todoRepository.findAllByUserOrderByCreatAtDesc(user).stream()
+        return todoRepository.findAllByUserOrderByCreatAtDesc(user.getUsername()).stream()
             .map(TodoListResponseDto::new).toList();
 
     }
